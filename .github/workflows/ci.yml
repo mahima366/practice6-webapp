@@ -17,3 +17,9 @@ jobs:
 
       - name: Check HTML File
         run: test -f home.html
+
+      - name: Notify Slack
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"Build Completed Successfully!"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
